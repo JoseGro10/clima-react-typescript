@@ -1,10 +1,11 @@
 import { countries } from "../../data/countries";
+import styles from './Form.module.css'
 
 export default function Form() {
   return (
-    <form>
+    <form className={styles.form}>
 
-        <div>
+        <div className={styles.field}>
             <label htmlFor="city">Ciudad:</label>
             <input
                 id="city"
@@ -14,7 +15,7 @@ export default function Form() {
             />
         </div>
 
-        <div>
+        <div className={styles.field}>
             <label htmlFor="city">Pais:</label>
             <select>
                 <option value="">-- Seleccione un Pais ---</option>
@@ -28,7 +29,7 @@ export default function Form() {
             
         </div>
 
-        <input type="submit" value='Consultar Clima'/> 
+        <input className={styles.submit} type="submit" value='Consultar Clima'/> 
     </form>
   )
 }
