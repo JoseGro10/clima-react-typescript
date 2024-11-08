@@ -5,7 +5,7 @@ export default function useWeather() {
 
     const fetchWeather = async (search: SearchType) => {
 
-        const appId = '12d27a6dfaa92dcd014e756608b9878d'
+        const appId = import.meta.env.VITE_API_KEY
 
         try{
             const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${search.city},${search.country}&appid=${appId}`
