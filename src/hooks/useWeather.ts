@@ -42,7 +42,7 @@ export default function useWeather() {
 
             //Comprobar si existe
             if(!data[0]){
-                console.log('Clima no encontrado')
+                setNotFound(true)
                 return
             }
             const lat = data[0].lat
