@@ -1,5 +1,19 @@
 import axios from 'axios'
 import { SearchType } from '../types'
+import { object, string, number, InferOutput, parse } from 'valibot' 
+
+
+// Valibot npm i valibot
+const WeatherSchema = object({
+    name: string(),
+    main: object({
+        temp: number(),
+        temp_max: number(),
+        temp_min: number()
+    })
+})
+
+type Weather = InferOutput<typeof WeatherSchema>
 
 export default function useWeather() {
 
@@ -16,7 +30,10 @@ export default function useWeather() {
 
             const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`
 
+            //Valibot
             const {data: weatherResult} = await axios(weatherUrl)
+            const result = parse(WeatherSchema, weatherResult)
+            console.log(result)
         }catch (error){
             console.log(error)
         }
